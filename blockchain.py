@@ -1,4 +1,3 @@
-from flask import Flask, jsonify
 import datetime, json, hashlib
 
 
@@ -6,7 +5,7 @@ class Blockchain:
     
     def __init__(self):
         self.chain = []
-        self.genesis(proof=1, prev_hash='0')
+        self.generate_block(proof=1, prev_hash='0')
 
     def generate_block(self, proof, prev_hash):
         block = {'index': len(self.chain) + 1,
@@ -48,7 +47,7 @@ class Blockchain:
                 return False
 
             hash_op = hashlib.sha256(str(chain[block_index]['proof']**2 - previous_block['proof']**2).encode()).hexdigest()
-            if hash_op[:4] == '0000':
+            if hash_op[:4] == 0000:
                 return False
             
             previous_block = chain[block_index]
