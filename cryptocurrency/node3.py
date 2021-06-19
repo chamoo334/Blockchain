@@ -1,8 +1,9 @@
-# flask run -h localhost -p 5000
+# flask run -h localhost -p 6003
 import datetime, json, hashlib, requests
 from flask import Flask, jsonify, request
 from uuid import uuid4
 from urllib.parse import urlparse
+import sys
 
 
 class Blockchain:
@@ -14,7 +15,8 @@ class Blockchain:
         self.nodes = set()
 
     def add_node(self, address):
-        self.nodes.add(urlparse(address).netloc)
+        parsed_url = urlparse(address)
+        self.nodes.add(parsed_url.netloc)
     
     def generate_block(self, proof, prev_hash):
         block = {'index': len(self.chain) + 1,
@@ -73,22 +75,23 @@ class Blockchain:
         return self.get_prev_block()['index'] + 1
 
     def update_chain(self):
-        network = self.nodes
-        longest_chain = None
-        max_length = len(self.chain)
+        print(self.nodes, file=sys.stdout)
+        # network = self.nodes
+        # longest_chain = None
+        # max_length = len(self.chain)
 
-        for node in network:
-            response = requests.get(f'http://{node}/get_chain')
-            if response.status_code == 200:
-                length = response.json()['length']
-                chain = response.json()['chain']
-                if length > max_length and self.is_chain_valid(chain):
-                    max_length = length
-                    longest_chain = chain
+        # for node in network:
+        #     response = requests.get(f'http://{node}/get_chain')
+        #     if response.status_code == 200:
+        #         length = response.json()['length']
+        #         chain = response.json()['chain']
+        #         if length > max_length and self.is_chain_valid(chain):
+        #             max_length = length
+        #             longest_chain = chain
 
-        if longest_chain:
-            self.chain = longest_chain
-            return True
+        # if longest_chain:
+        #     self.chain = longest_chain
+        #     return True
         return False
 
 
@@ -103,7 +106,7 @@ def mine_block():
     prev_block = blockchain.get_prev_block()
     prev_proof = prev_block['proof']
     prev_hash = blockchain.hash(prev_block)
-    blockchain.add_transaction(node_address, 'some_rec', 1)
+    blockchain.add_transaction(node_address, 'Node1', 1)
     proof = blockchain.proof_of_work(prev_proof)
     new_block = blockchain.generate_block(proof, prev_hash)
     response = {'message': 'Congrats - block mined & added to blockchain!',
@@ -149,11 +152,16 @@ def add_transaction():
 @app.route('/connect_node', methods = ['POST'])
 def connect_node():
     json = request.get_json()
-    nodes = json.get('postman_nodes')
+    nodes = json.get('nodes')
+    
     if nodes is None:
         return "No node", 400
     for node in nodes:
         blockchain.add_node(node)
+        print(blockchain.nodes, file=sys.stdout)
+
+        
+    
     response = {'message': 'Node connected!',
                 'total_nodes': len(list(blockchain.nodes)),
                 'all_nodes': list(blockchain.nodes)}
@@ -161,7 +169,8 @@ def connect_node():
 
 
 @app.route('/update_chain', methods = ['GET'])
-def replace_chain():
+def update_chain():
+    print(blockchain.nodes, file=sys.stdout)
     is_chain_replaced = blockchain.update_chain()
     if is_chain_replaced:
         response = {'message': 'Blockchain has been updated.',
@@ -170,3 +179,9 @@ def replace_chain():
         response = {'message': 'Blockchain is up to date.',
                     'actual_chain': blockchain.chain}
     return jsonify(response), 200
+
+
+@app.route('/get_nodes', methods = ['GET'])
+def get_nodes():
+    nodes = list(blockchain.nodes)
+    return jsonify(nodes), 200
