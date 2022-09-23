@@ -1,0 +1,594 @@
+New block difficulty: 2
+Time to mine new block: 3.9147e-05s
+Average time to add blocks: 3.9147e-05s
+
+New block difficulty: 3
+Time to mine new block: 8.6501e-05s
+Average time to add blocks: 6.282400000000001e-05s
+
+New block difficulty: 4
+Time to mine new block: 1.5859e-05s
+Average time to add blocks: 4.716900000000001e-05s
+
+New block difficulty: 5
+Time to mine new block: 0.000616696s
+Average time to add blocks: 0.00018955075s
+
+New block difficulty: 6
+Time to mine new block: 4.0443e-05s
+Average time to add blocks: 0.00015972920000000002s
+
+New block difficulty: 7
+Time to mine new block: 0.000521556s
+Average time to add blocks: 0.00022003366666666665s
+
+New block difficulty: 8
+Time to mine new block: 7.6929e-05s
+Average time to add blocks: 0.00019959014285714284s
+
+New block difficulty: 9
+Time to mine new block: 0.004525509s
+Average time to add blocks: 0.00074033s
+
+New block difficulty: 10
+Time to mine new block: 0.03431381s
+Average time to add blocks: 0.004470716666666667s
+
+New block difficulty: 11
+Time to mine new block: 0.005138828s
+Average time to add blocks: 0.0045375278s
+
+New block difficulty: 12
+Time to mine new block: 0.033743052s
+Average time to add blocks: 0.007192575454545455s
+
+New block difficulty: 13
+Time to mine new block: 0.122226409s
+Average time to add blocks: 0.01677872825s
+
+New block difficulty: 14
+Time to mine new block: 0.077868947s
+Average time to add blocks: 0.021477975846153845s
+
+New block difficulty: 15
+Time to mine new block: 0.167542854s
+Average time to add blocks: 0.031911181428571425s
+
+New block difficulty: 16
+Time to mine new block: 0.313698332s
+Average time to add blocks: 0.05069699146666666s
+
+New block difficulty: 15
+Time to mine new block: 4.475856598s
+Average time to add blocks: 0.327269466875s
+
+New block difficulty: 16
+Time to mine new block: 0.449943642s
+Average time to add blocks: 0.33448559482352946s
+
+New block difficulty: 17
+Time to mine new block: 2.864479039s
+Average time to add blocks: 0.4750407861666667s
+
+New block difficulty: 16
+Time to mine new block: 4.828021712s
+Average time to add blocks: 0.7041450454210526s
+
+New block difficulty: 17
+Time to mine new block: 0.650376341s
+Average time to add blocks: 0.7014566101999999s
+
+New block difficulty: 18
+Time to mine new block: 0.259084749s
+Average time to add blocks: 0.6803912834761905s
+
+New block difficulty: 19
+Time to mine new block: 0.067061486s
+Average time to add blocks: 0.6525126563181818s
+
+New block difficulty: 18
+Time to mine new block: 4.685193533s
+Average time to add blocks: 0.8278466074782608s
+
+New block difficulty: 19
+Time to mine new block: 0.48580228s
+Average time to add blocks: 0.8135947605s
+
+New block difficulty: 18
+Time to mine new block: 8.807083978s
+Average time to add blocks: 1.1333343292s
+
+New block difficulty: 19
+Time to mine new block: 3.158921151s
+Average time to add blocks: 1.2112415146538462s
+
+New block difficulty: 18
+Time to mine new block: 4.564194646s
+Average time to add blocks: 1.335424963962963s
+
+New block difficulty: 17
+Time to mine new block: 6.507357174s
+Average time to add blocks: 1.5201368286071428s
+
+New block difficulty: 18
+Time to mine new block: 2.007464542s
+Average time to add blocks: 1.5369412325172414s
+
+New block difficulty: 19
+Time to mine new block: 0.616096527s
+Average time to add blocks: 1.506246409s
+
+New block difficulty: 18
+Time to mine new block: 5.584910455s
+Average time to add blocks: 1.637816216935484s
+
+New block difficulty: 19
+Time to mine new block: 0.573683366s
+Average time to add blocks: 1.60456206534375s
+
+New block difficulty: 18
+Time to mine new block: 5.507526159s
+Average time to add blocks: 1.7228337045454545s
+
+New block difficulty: 17
+Time to mine new block: 5.442907489s
+Average time to add blocks: 1.832247639382353s
+
+New block difficulty: 18
+Time to mine new block: 0.578714622s
+Average time to add blocks: 1.7964324103142857s
+
+New block difficulty: 19
+Time to mine new block: 0.589619443s
+Average time to add blocks: 1.7629098278888888s
+
+New block difficulty: 18
+Time to mine new block: 7.150219853s
+Average time to add blocks: 1.9085128015405404s
+
+New block difficulty: 17
+Time to mine new block: 6.562629335s
+Average time to add blocks: 2.0309895524210524s
+
+New block difficulty: 18
+Time to mine new block: 1.400340945s
+Average time to add blocks: 2.0148190753076918s
+
+New block difficulty: 19
+Time to mine new block: 2.620021667s
+Average time to add blocks: 2.0299491401s
+
+New block difficulty: 18
+Time to mine new block: 5.49087312s
+Average time to add blocks: 2.114361920097561s
+
+New block difficulty: 17
+Time to mine new block: 4.616664479s
+Average time to add blocks: 2.1739405524523807s
+
+New block difficulty: 16
+Time to mine new block: 4.586417265s
+Average time to add blocks: 2.2300446620465113s
+
+New block difficulty: 17
+Time to mine new block: 3.350584189s
+Average time to add blocks: 2.2555114694772724s
+
+New block difficulty: 18
+Time to mine new block: 1.453285291s
+Average time to add blocks: 2.237684221066666s
+
+New block difficulty: 17
+Time to mine new block: 7.095217554s
+Average time to add blocks: 2.3432827717826084s
+
+New block difficulty: 16
+Time to mine new block: 5.140904064s
+Average time to add blocks: 2.4028066290638295s
+
+New block difficulty: 17
+Time to mine new block: 3.816543084s
+Average time to add blocks: 2.4322594718749997s
+
+New block difficulty: 16
+Time to mine new block: 4.517507988s
+Average time to add blocks: 2.4748155640408163s
+
+New block difficulty: 17
+Time to mine new block: 0.965105666s
+Average time to add blocks: 2.44462136608s
+
+New block difficulty: 16
+Time to mine new block: 5.965562067s
+Average time to add blocks: 2.513659419039216s
+
+New block difficulty: 17
+Time to mine new block: 0.063862547s
+Average time to add blocks: 2.4665479407307696s
+
+New block difficulty: 16
+Time to mine new block: 5.240008633s
+Average time to add blocks: 2.518877387754717s
+
+New block difficulty: 17
+Time to mine new block: 0.847373295s
+Average time to add blocks: 2.4879236082592597s
+
+New block difficulty: 16
+Time to mine new block: 4.246129375s
+Average time to add blocks: 2.5198909858363643s
+
+New block difficulty: 17
+Time to mine new block: 1.813729864s
+Average time to add blocks: 2.5072809658035724s
+
+New block difficulty: 18
+Time to mine new block: 3.868909313s
+Average time to add blocks: 2.531169182421053s
+
+New block difficulty: 17
+Time to mine new block: 4.741988508s
+Average time to add blocks: 2.5692867570000004s
+
+New block difficulty: 18
+Time to mine new block: 2.909132625s
+Average time to add blocks: 2.575046856457628s
+
+New block difficulty: 17
+Time to mine new block: 4.966676987s
+Average time to add blocks: 2.614907358633334s
+
+New block difficulty: 18
+Time to mine new block: 2.958685753s
+Average time to add blocks: 2.620543070016394s
+
+New block difficulty: 17
+Time to mine new block: 5.18600665s
+Average time to add blocks: 2.661921514854839s
+
+New block difficulty: 18
+Time to mine new block: 0.041119071s
+Average time to add blocks: 2.6203214760634923s
+
+New block difficulty: 17
+Time to mine new block: 9.440365279s
+Average time to add blocks: 2.7268846604843753s
+
+New block difficulty: 16
+Time to mine new block: 4.737499973s
+Average time to add blocks: 2.7578172037538464s
+
+New block difficulty: 15
+Time to mine new block: 4.66011496s
+Average time to add blocks: 2.7866398970303035s
+
+New block difficulty: 16
+Time to mine new block: 1.378366127s
+Average time to add blocks: 2.7656208855373134s
+
+New block difficulty: 17
+Time to mine new block: 0.783935281s
+Average time to add blocks: 2.7364784501764707s
+
+New block difficulty: 16
+Time to mine new block: 5.475157799s
+Average time to add blocks: 2.776169455231884s
+
+New block difficulty: 17
+Time to mine new block: 0.503005435s
+Average time to add blocks: 2.743695683514286s
+
+New block difficulty: 16
+Time to mine new block: 5.102567895s
+Average time to add blocks: 2.7769192357887325s
+
+New block difficulty: 17
+Time to mine new block: 3.440380485s
+Average time to add blocks: 2.786133975361111s
+
+New block difficulty: 16
+Time to mine new block: 4.384757273s
+Average time to add blocks: 2.808032924643835s
+
+New block difficulty: 17
+Time to mine new block: 0.432130377s
+Average time to add blocks: 2.775926133459459s
+
+New block difficulty: 18
+Time to mine new block: 0.335809843s
+Average time to add blocks: 2.7433912495866664s
+
+New block difficulty: 17
+Time to mine new block: 7.954935561s
+Average time to add blocks: 2.811964201052631s
+
+New block difficulty: 18
+Time to mine new block: 1.384720311s
+Average time to add blocks: 2.7934285661168827s
+
+New block difficulty: 19
+Time to mine new block: 0.202255902s
+Average time to add blocks: 2.7602084037564096s
+
+New block difficulty: 18
+Time to mine new block: 12.737427935s
+Average time to add blocks: 2.8865023218734174s
+
+New block difficulty: 19
+Time to mine new block: 2.890329423s
+Average time to add blocks: 2.8865501606374995s
+
+New block difficulty: 20
+Time to mine new block: 1.550561522s
+Average time to add blocks: 2.8700564737407404s
+
+New block difficulty: 19
+Time to mine new block: 4.589168471s
+Average time to add blocks: 2.8910212541951217s
+
+New block difficulty: 18
+Time to mine new block: 4.798950272s
+Average time to add blocks: 2.9140083507951804s
+
+New block difficulty: 19
+Time to mine new block: 2.059179663s
+Average time to add blocks: 2.903831818797619s
+
+New block difficulty: 18
+Time to mine new block: 6.647457587s
+Average time to add blocks: 2.9478744748941175s
+
+New block difficulty: 19
+Time to mine new block: 0.077326415s
+Average time to add blocks: 2.914496009081395s
+
+New block difficulty: 20
+Time to mine new block: 2.496143452s
+Average time to add blocks: 2.909687359s
+
+New block difficulty: 19
+Time to mine new block: 7.641325658s
+Average time to add blocks: 2.9634559760340906s
+
+New block difficulty: 18
+Time to mine new block: 5.836038301s
+Average time to add blocks: 2.9957321819325835s
+
+New block difficulty: 17
+Time to mine new block: 6.59652155s
+Average time to add blocks: 3.035740952688888s
+
+New block difficulty: 18
+Time to mine new block: 0.397297947s
+Average time to add blocks: 3.006747073505494s
+
+New block difficulty: 17
+Time to mine new block: 5.906267082s
+Average time to add blocks: 3.038263595336956s
+
+New block difficulty: 18
+Time to mine new block: 0.076093414s
+Average time to add blocks: 3.006412303064516s
+
+New block difficulty: 19
+Time to mine new block: 2.941766493s
+Average time to add blocks: 3.0057245816808504s
+
+New block difficulty: 20
+Time to mine new block: 1.134158606s
+Average time to add blocks: 2.9860238872s
+
+New block difficulty: 19
+Time to mine new block: 4.014352886s
+Average time to add blocks: 2.9967356476041664s
+
+New block difficulty: 18
+Time to mine new block: 5.769173537s
+Average time to add blocks: 3.0253174815154638s
+
+New block difficulty: 19
+Time to mine new block: 3.934828886s
+Average time to add blocks: 3.034598210132653s
+
+New block difficulty: 18
+Time to mine new block: 6.758057316s
+Average time to add blocks: 3.072208908171717s
+
+New block difficulty: 17
+Time to mine new block: 4.887913058s
+Average time to add blocks: 3.09036594967s
+
+New block difficulty: 18
+Time to mine new block: 0.034433713s
+Average time to add blocks: 3.060109194851485s
+
+New block difficulty: 17
+Time to mine new block: 9.630891914s
+Average time to add blocks: 3.12452863327451s
+
+New block difficulty: 18
+Time to mine new block: 1.315923906s
+Average time to add blocks: 3.10696936407767s
+
+New block difficulty: 17
+Time to mine new block: 6.01041254s
+Average time to add blocks: 3.134887086923077s
+
+New block difficulty: 18
+Time to mine new block: 2.014508686s
+Average time to add blocks: 3.1242168164380955s
+
+New block difficulty: 17
+Time to mine new block: 6.604919565s
+Average time to add blocks: 3.157053634820755s
+
+New block difficulty: 18
+Time to mine new block: 3.70587299s
+Average time to add blocks: 3.162182787672897s
+
+New block difficulty: 19
+Time to mine new block: 1.661402156s
+Average time to add blocks: 3.148286670712963s
+
+New block difficulty: 18
+Time to mine new block: 4.354042501s
+Average time to add blocks: 3.159348650807339s
+
+New block difficulty: 17
+Time to mine new block: 4.798496462s
+Average time to add blocks: 3.1742499945454545s
+
+New block difficulty: 18
+Time to mine new block: 1.162333867s
+Average time to add blocks: 3.1561246240270266s
+
+New block difficulty: 17
+Time to mine new block: 4.77024453s
+Average time to add blocks: 3.1705364089017856s
+
+New block difficulty: 18
+Time to mine new block: 0.919026763s
+Average time to add blocks: 3.150611544778761s
+
+New block difficulty: 17
+Time to mine new block: 4.888155659s
+Average time to add blocks: 3.1658531598157893s
+
+New block difficulty: 18
+Time to mine new block: 1.486503411s
+Average time to add blocks: 3.1512501185217388s
+
+New block difficulty: 17
+Time to mine new block: 7.24800883s
+Average time to add blocks: 3.186567003965517s
+
+New block difficulty: 16
+Time to mine new block: 4.001216526s
+Average time to add blocks: 3.193529820393162s
+
+New block difficulty: 17
+Time to mine new block: 1.09748616s
+Average time to add blocks: 3.175766738525424s
+
+New block difficulty: 18
+Time to mine new block: 1.4905979s
+Average time to add blocks: 3.1616056558487395s
+
+New block difficulty: 17
+Time to mine new block: 6.74531446s
+Average time to add blocks: 3.191469895883333s
+
+New block difficulty: 18
+Time to mine new block: 0.02583357s
+Average time to add blocks: 3.1653076121983466s
+
+New block difficulty: 17
+Time to mine new block: 5.410776789s
+Average time to add blocks: 3.183713097254098s
+
+New block difficulty: 18
+Time to mine new block: 0.727230663s
+Average time to add blocks: 3.1637416953495934s
+
+New block difficulty: 17
+Time to mine new block: 5.218587705s
+Average time to add blocks: 3.1803130341370967s
+
+New block difficulty: 18
+Time to mine new block: 1.876921655s
+Average time to add blocks: 3.169885903104s
+
+New block difficulty: 19
+Time to mine new block: 1.190848616s
+Average time to add blocks: 3.1541792579682535s
+
+New block difficulty: 18
+Time to mine new block: 7.561731744s
+Average time to add blocks: 3.1888843956535426s
+
+New block difficulty: 17
+Time to mine new block: 7.87331693s
+Average time to add blocks: 3.2254815248281243s
+
+New block difficulty: 16
+Time to mine new block: 4.272044647s
+Average time to add blocks: 3.233594417248061s
+
+New block difficulty: 17
+Time to mine new block: 0.522817985s
+Average time to add blocks: 3.212742290846153s
+
+New block difficulty: 18
+Time to mine new block: 3.903197537s
+Average time to add blocks: 3.218012941580152s
+
+New block difficulty: 19
+Time to mine new block: 3.37072902s
+Average time to add blocks: 3.219169881568181s
+
+New block difficulty: 18
+Time to mine new block: 5.776066199s
+Average time to add blocks: 3.2383946659097735s
+
+New block difficulty: 17
+Time to mine new block: 7.229406497s
+Average time to add blocks: 3.268178336291044s
+
+New block difficulty: 16
+Time to mine new block: 4.458911877s
+Average time to add blocks: 3.27699858474074s
+
+New block difficulty: 17
+Time to mine new block: 0.543239803s
+Average time to add blocks: 3.2568974172279406s
+
+New block difficulty: 18
+Time to mine new block: 3.534417765s
+Average time to add blocks: 3.2589231131970795s
+
+New block difficulty: 17
+Time to mine new block: 8.188446874s
+Average time to add blocks: 3.2946442998695646s
+
+New block difficulty: 16
+Time to mine new block: 4.784393753s
+Average time to add blocks: 3.305361921834532s
+
+New block difficulty: 17
+Time to mine new block: 2.6209483s
+Average time to add blocks: 3.3004732531071426s
+
+New block difficulty: 18
+Time to mine new block: 0.62811074s
+Average time to add blocks: 3.2815203274822693s
+
+New block difficulty: 19
+Time to mine new block: 3.039976371s
+Average time to add blocks: 3.2798193137042255s
+
+New block difficulty: 18
+Time to mine new block: 14.735558825s
+Average time to add blocks: 3.359929380216783s
+
+New block difficulty: 17
+Time to mine new block: 5.054573752s
+Average time to add blocks: 3.3716977439097224s
+
+New block difficulty: 18
+Time to mine new block: 3.079203991s
+Average time to add blocks: 3.369680545613793s
+
+New block difficulty: 19
+Time to mine new block: 1.617919224s
+Average time to add blocks: 3.3576821803972603s
+
+New block difficulty: 18
+Time to mine new block: 10.494728548s
+Average time to add blocks: 3.4062335162312927s
+
+New block difficulty: 17
+Time to mine new block: 14.974231238s
+Average time to add blocks: 3.4843956629999995s
+
+New block difficulty: 16
+Time to mine new block: 4.529095574s
