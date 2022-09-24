@@ -64,6 +64,15 @@ class Block:
 
         return Block(timestamp, last_hash, hash, data, difficulty, nonce)
 
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+
+    def to_json(self):
+        """
+        Serialize the block into a dictionary of its attributes
+        """
+        return self.__dict__
+    
     @staticmethod
     def genesis():
         """
@@ -115,6 +124,13 @@ class Block:
         # the block hash must be a valid combination of the block fields
         if block.hash != reconstructed_hash:
             raise Exception('The block hash must be correct')
+
+    @staticmethod
+    def from_json(block_json):
+        """
+        Deserialize a block's json representation back into a block instance.
+        """
+        return Block(**block_json)
 
 
 def main():
