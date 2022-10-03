@@ -13,13 +13,10 @@ pnconfig.user_id = 'UUID'
 # pnconfig.reconnect_policy = PNReconnectionPolicy.LINEAR
 pnconfig.reconnect_policy = PNReconnectionPolicy.EXPONENTIAL
 
-
-
 CHANNELS = {
     'TEST': 'TEST',
     'BLOCK': 'BLOCK'
 }
-
 
 class Listener(SubscribeCallback):
     """
