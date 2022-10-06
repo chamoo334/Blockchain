@@ -16,11 +16,12 @@ python3 -m pytest backend/tests
 ```
 3. Run the application and API
 ```
-python3 -m backend.peer_helper
 python3 -m backend.app
 ```
 4. Run a peer instance in a separate terminal
 ```
+python3 -m backend.peer_helper
+python3 -m backend.scripts.update_peer_port
 export PEER=TRUE && python3 -m backend.app
 ```
 5. build images
