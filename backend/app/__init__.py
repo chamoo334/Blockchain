@@ -20,19 +20,16 @@ def route_default():
 
 @app.route('/blockchain')
 def route_blockchain():
-    # return blockchain.__repr__()
     return jsonify(blockchain.to_json())
 
 @app.route('/blockchain/mine')
 def route_blockchain_mine():
-    transaction_data = 'stubbed_transaction_data'
-
-    #  create basis of new block
+    transaction_data = transaction_pool.transaction_data()
+    transaction_data.append(Transaction.reward_transaction(wallet).to_json())
     blockchain.add_block(transaction_data)
-
-    # return mined block
     block = blockchain.chain[-1]
     pubsub.broadcast_block(block)
+    transaction_pool.clear_blockchain_transactions(blockchain)
 
     return jsonify(block.to_json())
 
@@ -40,7 +37,7 @@ def route_blockchain_mine():
 def route_wallet_transact():
     transaction_data = request.get_json()
     transaction = transaction_pool.existing_transaction(wallet.address)
-    
+
     if transaction:
         transaction.update(
             wallet,
@@ -58,9 +55,10 @@ def route_wallet_transact():
 
     return jsonify(transaction.to_json())
 
-    pubsub.broadcast_transaction(transaction)
 
-    return jsonify(transaction.to_json())
+@app.route('/wallet/info')
+def route_wallet_info():
+    return jsonify({ 'address': wallet.address, 'balance': wallet.balance })
 
 PORT = ROOT_PORT
 

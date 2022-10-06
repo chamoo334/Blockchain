@@ -4,7 +4,6 @@ from pubnub.pnconfiguration import PNConfiguration
 from pubnub.callbacks import SubscribeCallback
 from pubnub.enums import PNReconnectionPolicy
 from backend.blockchain.block import Block
-from backend.blockchain.blockchain import Blockchain
 from backend.wallet.transaction import Transaction
 
 pnconfig = PNConfiguration()
@@ -21,29 +20,28 @@ CHANNELS = {
 }
 
 class Listener(SubscribeCallback):
-    """
-    Listener
-    """
     def __init__(self, blockchain, transaction_pool):
         self.blockchain = blockchain
         self.transaction_pool = transaction_pool
 
-    def message(self, pubnub, object_message):
-        # announce message and add block to blockchain
-        print(f'\n-- Channel: {object_message.channel} | Message: {object_message.message}')
+    def message(self, pubnub, message_object):
+        print(f'\n-- Channel: {message_object.channel} | Message: {message_object.message}')
 
-        if object_message.channel == CHANNELS['BLOCK']:
-            block = Block.from_json(object_message.message)
+        if message_object.channel == CHANNELS['BLOCK']:
+            block = Block.from_json(message_object.message)
             potential_chain = self.blockchain.chain[:]
             potential_chain.append(block)
 
             try:
                 self.blockchain.replace_chain(potential_chain)
+                self.transaction_pool.clear_blockchain_transactions(
+                    self.blockchain
+                )
                 print('\n -- Successfully replaced the local chain')
             except Exception as e:
                 print(f'\n -- Did not replace chain: {e}')
-        elif object_message.channel == CHANNELS['TRANSACTION']:
-            transaction = Transaction.from_json(object_message.message)
+        elif message_object.channel == CHANNELS['TRANSACTION']:
+            transaction = Transaction.from_json(message_object.message)
             self.transaction_pool.set_transaction(transaction)
             print('\n -- Set the new transaction in the transaction pool')
 
@@ -65,24 +63,21 @@ class PubSub():
 
     def broadcast_block(self, block):
         """
-        Broadcast a block object to all nodes in Block channel.
+        Broadcast a block object to all nodes.
         """
         self.publish(CHANNELS['BLOCK'], block.to_json())
 
     def broadcast_transaction(self, transaction):
         """
-        Broadcast a transaction to all nodes in Transaction channel.
+        Broadcast a transaction to all nodes.
         """
         self.publish(CHANNELS['TRANSACTION'], transaction.to_json())
 
 
 def main():
-    """Test method"""
-    test_chain = Blockchain()
-    pubsub = PubSub(test_chain)
-    time.sleep(1) # for network connections
+    pubsub = PubSub()
+    time.sleep(1)
     pubsub.publish(CHANNELS['TEST'], { 'foo': 'bar' })
-
 
 if __name__ == '__main__':
     main()

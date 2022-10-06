@@ -14,7 +14,8 @@ GENESIS_DATA = {
 
 class Block:
     """
-    Block: a unit of storage for transactions in the blockchain
+    Block: a unit of storage.
+    Store transactions in a blockchain that supports a cryptocurrency.
     """
     def __init__(self, timestamp, last_hash, hash, data, difficulty, nonce):
         self.timestamp = timestamp
@@ -23,9 +24,6 @@ class Block:
         self.data = data
         self.difficulty = difficulty
         self.nonce = nonce
-
-    def add_block(self, data):
-        self.chain.append(Block(data))
 
     def __repr__(self):
         return (
@@ -38,11 +36,20 @@ class Block:
             f'nonce: {self.nonce})'
         )
 
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+
+    def to_json(self):
+        """
+        Serialize the block into a dictionary of its attributes
+        """
+        return self.__dict__
+
     @staticmethod
     def mine_block(last_block, data):
         """
-        Mine a block based on the provided last block and data.
-        Blocks are mined until proof of work requirements are met.
+        Mine a block based on the given last_block and data, until a block hash
+        is found that meets the leading 0's proof of work requirement.
         """
         timestamp = time.time_ns()
         last_hash = last_block.hash
@@ -55,38 +62,30 @@ class Block:
             timestamp = time.time_ns()
             difficulty = Block.adjust_difficulty(last_block, timestamp)
             hash = crypto_hash(timestamp, last_hash, data, difficulty, nonce)
-        
-        # while hash[0:difficulty] != '0' * difficulty:
-        #     nonce += 1
-        #     timestamp = time.time_ns()
-        #     difficulty = Block.adjust_difficulty(last_block, timestamp)
-        #     hash = crypto_hash(timestamp, last_hash, data, difficulty, nonce)
 
         return Block(timestamp, last_hash, hash, data, difficulty, nonce)
 
-    def __eq__(self, other):
-        return self.__dict__ == other.__dict__
-
-    def to_json(self):
-        """
-        Serialize the block into a dictionary of its attributes
-        """
-        return self.__dict__
-    
     @staticmethod
     def genesis():
         """
-        Generate the genesis (initial) block.
+        Generate the genesis block.
         """
         return Block(**GENESIS_DATA)
 
     @staticmethod
+    def from_json(block_json):
+        """
+        Deserialize a block's json representation back into a block instance.
+        """
+        return Block(**block_json)
+
+    @staticmethod
     def adjust_difficulty(last_block, new_timestamp):
         """
-        Calculates difficulty according to MINE_RATE.
-        Adjusts MINE_RATE as needed.
+        Calculate the adjusted difficulty according to the MINE_RATE.
+        Increase the difficulty for quickly mined blocks.
+        Decrease the difficulty for slowly mined blocks.
         """
-
         if (new_timestamp - last_block.timestamp) < MINE_RATE:
             return last_block.difficulty + 1
 
@@ -98,18 +97,18 @@ class Block:
     @staticmethod
     def is_valid_block(last_block, block):
         """
-        Validate block using commented rules
+        Validate block by enforcing the following rules:
+          - the block must have the proper last_hash reference
+          - the block must meet the proof of work requirement
+          - the difficulty must only adjust by 1
+          - the block hash must be a valid combination of the block fields
         """
-
-        # the block must have the proper last_hash reference
         if block.last_hash != last_block.hash:
             raise Exception('The block last_hash must be correct')
 
-        # the block must meet the proof of work requirement
         if hex_to_binary(block.hash)[0:block.difficulty] != '0' * block.difficulty:
             raise Exception('The proof of work requirement was not met')
 
-        # the difficulty must only adjust by 1
         if abs(last_block.difficulty - block.difficulty) > 1:
             raise Exception('The block difficulty must only adjust by 1')
 
@@ -121,17 +120,8 @@ class Block:
             block.difficulty
         )
 
-        # the block hash must be a valid combination of the block fields
         if block.hash != reconstructed_hash:
             raise Exception('The block hash must be correct')
-
-    @staticmethod
-    def from_json(block_json):
-        """
-        Deserialize a block's json representation back into a block instance.
-        """
-        return Block(**block_json)
-
 
 def main():
     genesis_block = Block.genesis()

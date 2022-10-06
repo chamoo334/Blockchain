@@ -1,4 +1,6 @@
-import uuid, json
+import json
+import uuid
+
 from backend.config import STARTING_BALANCE
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.asymmetric import ec
@@ -11,30 +13,36 @@ from cryptography.exceptions import InvalidSignature
 
 class Wallet:
     """
-    Individual wallet for a miner. Keeps track of miner's balance and allows miner to authorize transactions.
+    An individual wallet for a miner.
+    Keeps track of the miner's balance.
+    Allows a miner to authorize transactions.
     """
-
-    def __init__(self):
-        # self.address = str(uuid.uuid4())
-        self.address = str(uuid.uuid4())[:8]
+    def __init__(self, blockchain=None):
+        self.blockchain = blockchain
+        self.address = str(uuid.uuid4())[0:8]
         self.private_key = ec.generate_private_key(
-            ec.SECP256K1(), 
+            ec.SECP256K1(),
             default_backend()
         )
         self.public_key = self.private_key.public_key()
         self.serialize_public_key()
-        self.balance = STARTING_BALANCE
+
+    @property
+    def balance(self):
+        return Wallet.calculate_balance(self.blockchain, self.address)
 
     def sign(self, data):
-        """Generates a signature based on the data using the private key"""
+        """
+        Generate a signature based on the data using the local private key.
+        """
         return decode_dss_signature(self.private_key.sign(
-            json.dumps(data).encode('utf-8'), 
+            json.dumps(data).encode('utf-8'),
             ec.ECDSA(hashes.SHA256())
         ))
 
     def serialize_public_key(self):
         """
-        Reset the public key to its serialized version (public key bytes).
+        Reset the public key to its serialized version.
         """
         self.public_key = self.public_key.public_bytes(
             encoding=serialization.Encoding.PEM,
@@ -50,7 +58,9 @@ class Wallet:
             public_key.encode('utf-8'),
             default_backend()
         )
+
         (r, s) = signature
+
         try:
             deserialized_public_key.verify(
                 encode_dss_signature(r, s),
@@ -58,9 +68,32 @@ class Wallet:
                 ec.ECDSA(hashes.SHA256())    
             )
             return True
-        except InvalidSignature: #
+        except InvalidSignature:
             return False
 
+    @staticmethod
+    def calculate_balance(blockchain, address):
+        """
+        Calculate the balance of the given address considering the transaction
+        data within the blockchain.
+        The balance is found by adding the output values that belong to the
+        address since the most recent transaction by that address.
+        """
+        balance = STARTING_BALANCE
+
+        if not blockchain:
+            return balance
+
+        for block in blockchain.chain:
+            for transaction in block.data:
+                if transaction['input']['address'] == address:
+                    # Any time the address conducts a new transaction it resets
+                    # its balance
+                    balance = transaction['output'][address]
+                elif address in transaction['output']:
+                    balance += transaction['output'][address]
+
+        return balance
 
 def main():
     wallet = Wallet()
