@@ -5,8 +5,9 @@ from backend.wallet.wallet import Wallet
 from backend.wallet.transaction import Transaction
 from backend.wallet.transaction_pool import TransactionPool
 from backend.pubsub import PubSub
+from backend.config import APP_PORT, PEER_PORT
 
-ROOT_PORT = 5000
+PORT = APP_PORT
 
 app = Flask(__name__)
 blockchain = Blockchain()
@@ -60,14 +61,12 @@ def route_wallet_transact():
 def route_wallet_info():
     return jsonify({ 'address': wallet.address, 'balance': wallet.balance })
 
-PORT = ROOT_PORT
-
 # instantiate peer network connection and update blockchain
-if os.environ.get('PEER') == 'TRUE':
-    print('here')
-    PORT = random.randint(5001, 6000)
+if os.environ.get('PEER') == 'TRUE': #TODO: fix to True
 
-    result = requests.get(f'http://localhost:{ROOT_PORT}/blockchain')
+    PORT = PEER_PORT
+
+    result = requests.get(f'http://localhost:{APP_PORT}/blockchain')
     result_blockchain = Blockchain.from_json(result.json())
 
     try:
