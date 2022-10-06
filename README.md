@@ -22,3 +22,8 @@ python3 -m backend.app
 ```
 export PEER=TRUE && python3 -m backend.app
 ```
+5. build containers
+```
+docker build --no-cache -t backend -f ./containers/Dockerfile.server.main .
+docker build --no-cache -t backend_peer -f ./containers/Dockerfile.server.peer .
+```
