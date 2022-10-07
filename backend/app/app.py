@@ -1,4 +1,4 @@
-import os, random, requests, atexit
+import os, requests, atexit, signal
 from flask import Flask, jsonify, request
 from backend.blockchain.blockchain import Blockchain
 from backend.wallet.wallet import Wallet
@@ -6,6 +6,7 @@ from backend.wallet.transaction import Transaction
 from backend.wallet.transaction_pool import TransactionPool
 from backend.pubsub import PubSub
 from backend.config import APP_PORT, PEER_PORT, PEER_HELPER_PORT
+
 
 PORT = APP_PORT
 
@@ -75,11 +76,17 @@ if os.environ.get('PEER') == 'TRUE': #TODO: fix to True
     except Exception as e:
         print(f'\n -- Error synchronizing: {e}')
 
-# @atexit.register
+@atexit.register
 def free_port():
-    # update = requests.post(f'http://localhost:{PEER_HELPER_PORT}/remove/port', json={'available_port': PORT})
+    update = requests.post(f'http://localhost:{PEER_HELPER_PORT}/remove/port', json={'available_port': PORT})
     return f'Port {PORT} is now available'
 
+#TODO: switch to sys.exit for cleaner
+def signal_handler(sig, frame):
+    free_port()
+    os._exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
+
 if __name__ == '__main__':
-    atexit.register(free_port)
     app.run(port=PORT, host='0.0.0.0')
