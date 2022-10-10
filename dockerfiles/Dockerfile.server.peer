@@ -1,0 +1,8 @@
+FROM python:3.10.6
+WORKDIR usr/src
+COPY ./requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY ./backend ./backend
+ENV PEER=TRUE
+EXPOSE 5002-6002
+CMD [ "python", "-m", "backend.app.app" ]

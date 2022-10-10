@@ -1,11 +1,14 @@
 # Blockchain
 
-## Getting Started
-**(Suggested)** Activating Virtual Environment
-```
-python3 -m venv blockchain
-source blockchain/bin/activate
-```
+- [Blockchain](#blockchain)
+  - [Verify Applications](#verify-applications)
+    - [Backend](#backend)
+    - [Frontend](#frontend)
+  - [Run as Containers](#run-as-containers)
+    - [Backend Only](#backend-only)
+
+## Verify Applications
+### Backend
 1. Install required packages
 ```
 pip3 install -r requirements.txt
@@ -18,7 +21,35 @@ python3 -m pytest backend/tests
 ```
 python3 -m backend.app
 ```
-4. Run a peer instance in a separate terminal
-```
+4. To run a peer instance, start the port_selector server in a 2nd terminal. Run the peer port updater script and the start the application as a peer in a 3rd terminal.
+```sh
+# 2nd terminal
+python3 -m backend.port_selector
+
+# 3rd terminal
 export PEER=TRUE && python3 -m backend.app
 ```
+### Frontend
+## Run as Containers
+### Backend Only
+1. build main server images <br>
+<mark>Note</mark>: default ports for backend.app and backend.port_selector are 5000 and 5001. These ports can be adjusted by altering backend.config and updating dockerfiles located in ./dockerfiles
+```
+docker build --no-cache -t backendhelper -f ./dockerfiles/Dockerfile.server.helper .
+docker build --no-cache -t backendmain -f ./dockerfiles/Dockerfile.server.main .
+docker build --no-cache -t backendpeer -f ./dockerfiles/Dockerfile.server.peer .
+```
+2. run main server containers <br>
+```
+docker run -p 5001:5001 --name backendhelper --net=host -d backendhelper
+docker run -p 5000:5000 --name backendmain --net=host -d backendmain
+docker run -p 5002-6002:5002-6002 --name backendpeer --net=host -d backendpeer
+```
+3. obtain ports
+```
+wget http://localhost:5001/get/ports
+```
+<mark>Note: </mark> At this point, 3 ports should be present: 5000 (backend.app non-peer instance), 5001 (backend.port_selector), and a third port for backend.app peer instance
+4. Proceed with tests:
+   1. via `python3 -m backend.scripts.test_app`. This test can be modified by altering the port to a peer instance on line 6.
+   2. Alternatively, test the /blockchain and /blockchain/mine endpoints for each container by making calls to the respective ports. 
