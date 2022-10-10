@@ -4,4 +4,4 @@
 **/__pycache__/
 .vscode/
 my_config.py
-ports_list_backup.txt
+ports-*.txt

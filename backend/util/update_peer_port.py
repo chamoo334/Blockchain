@@ -9,7 +9,7 @@ def get_port():
     return selected_port.json()
 
 def project_base_dir():
-    project_base_dir = os.path.dirname(__file__).split("backend/scripts")[0]
+    project_base_dir = os.path.dirname(__file__).split("backend/util")[0]
     return project_base_dir
 
 def read_file_lines(filename):

@@ -1,7 +1,8 @@
 import os, random, atexit
+from datetime import datetime
 from flask import Flask, jsonify, request
 from backend.config import APP_PORT, PEER_HELPER_PORT
-from backend.scripts.update_peer_port import project_base_dir, write_to_file
+from backend.util.update_peer_port import project_base_dir, write_to_file
 
 PORT = PEER_HELPER_PORT
 RANGE_START = PORT + 1
@@ -33,15 +34,22 @@ def route_peer_port():
 def route_remove_port():
     remove_port = request.get_json()['available_port']
     PORTS_IN_USE.remove(remove_port)
+    print(PORTS_IN_USE)
     return 'Removed port'
+
+@app.route('/get/ports')
+def route_get_ports():
+    return jsonify(ports = PORTS_IN_USE)
 
 @atexit.register
 def remove_self_backup_ports_in_use():
     PORTS_IN_USE.remove(PORT)
 
-    ports_backup = project_base_dir() + 'backend/scripts/ports_list_backup.txt'
+    ports_backup = project_base_dir() + f'backend/backups/ports-{datetime.now().strftime("%Y-%m-%d-%H-%M-%S")}.txt'
     ports_string_list = [f'{port}\n' for port in PORTS_IN_USE]
     write_to_file(ports_string_list, ports_backup)
+
+    print(PORTS_IN_USE)
 
 def signal_handler(sig, frame):
     remove_self_backup_ports_in_use()
