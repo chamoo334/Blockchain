@@ -1,9 +1,9 @@
 import requests
 import time
-
+from backend.config import TEST_ADDRESS
 from backend.wallet.wallet import Wallet
 
-BASE_URL = 'http://localhost:5000'
+BASE_URL = TEST_ADDRESS
 
 def get_blockchain():
     return requests.get(f'{BASE_URL}/blockchain').json()

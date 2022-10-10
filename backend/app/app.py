@@ -5,7 +5,7 @@ from backend.wallet.wallet import Wallet
 from backend.wallet.transaction import Transaction
 from backend.wallet.transaction_pool import TransactionPool
 from backend.pubsub import PubSub
-from backend.config import APP_PORT, PEER_PORT, PEER_HELPER_PORT
+from backend.config import APP_ADDRESS, APP_PORT, PEER_HELPER_PORT, PEER_HELPER_ADDRESS
 
 
 PORT = APP_PORT
@@ -65,12 +65,10 @@ def route_wallet_info():
 # instantiate peer network connection and update blockchain
 if os.environ.get('PEER') == 'TRUE':
 
-    # PORT = PEER_PORT
-    # get_port = requests.get(f'http://localhost:{PEER_HELPER_PORT}/peer/port').json()['peer_port']
-    PORT = requests.get(f'http://localhost:{PEER_HELPER_PORT}/peer/port').json()['peer_port']
+    PORT = requests.get(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/peer/port').json()['peer_port']
     print(PORT)
 
-    result = requests.get(f'http://localhost:{APP_PORT}/blockchain')
+    result = requests.get(f'{APP_ADDRESS}:{APP_PORT}/blockchain')
     result_blockchain = Blockchain.from_json(result.json())
 
     try:
@@ -79,14 +77,14 @@ if os.environ.get('PEER') == 'TRUE':
     except Exception as e:
         print(f'\n -- Error synchronizing: {e}')
 else: # notify port_selector of server port in use
-    notify = requests.post(f'http://localhost:{PEER_HELPER_PORT}/update/server/port', json={'server_port': PORT})
+    notify = requests.post(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/update/server/port', json={'server_port': PORT})
 
 @atexit.register
 def free_port():
     if os.environ.get('PEER') == 'TRUE':
-        update = requests.post(f'http://localhost:{PEER_HELPER_PORT}/remove/port', json={'available_port': PORT})
+        update = requests.post(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/remove/port', json={'available_port': PORT})
     else:
-        update = requests.post(f'http://localhost:{PEER_HELPER_PORT}/update/server/port', json={'server_port': PORT})
+        update = requests.post(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/update/server/port', json={'server_port': PORT})
     return f'Port {PORT} is now available'
 
 #TODO: switch to sys.exit for cleaner

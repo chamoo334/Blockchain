@@ -3,7 +3,6 @@
 - [Blockchain](#blockchain)
   - [Verify Applications](#verify-applications)
     - [Backend](#backend)
-    - [Frontend](#frontend)
   - [Run as Containers](#run-as-containers)
     - [Backend Only](#backend-only)
 
@@ -29,23 +28,24 @@ python3 -m backend.port_selector
 # 3rd terminal
 export PEER=TRUE && python3 -m backend.app
 ```
-### Frontend
+<!-- ### Frontend -->
 ## Run as Containers
 ### Backend Only
 1. build main server images <br>
-<mark>Note</mark>: default ports for backend.app and backend.port_selector are 5000 and 5001. These ports can be adjusted by altering backend.config and updating dockerfiles located in ./dockerfiles
+<mark>Note</mark>: default ports for backend.app and backend.port_selector are 5000 and 5001. These ports can be adjusted by altering backend.config and updating Dockerfiles located in ./dockerfiles
 ```
 docker build --no-cache -t backendhelper -f ./dockerfiles/Dockerfile.server.helper .
 docker build --no-cache -t backendmain -f ./dockerfiles/Dockerfile.server.main .
 docker build --no-cache -t backendpeer -f ./dockerfiles/Dockerfile.server.peer .
 ```
 2. run main server containers <br>
+<mark>Note</mark>: These run commands are set to use localhost for general use within various environments. Please adjust the declared network to use and update urls in backend.config for your needs.
 ```
 docker run -p 5001:5001 --name backendhelper --net=host -d backendhelper
 docker run -p 5000:5000 --name backendmain --net=host -d backendmain
 docker run -p 5002-6002:5002-6002 --name backendpeer --net=host -d backendpeer
 ```
-3. obtain ports
+1. obtain ports
 ```
 wget http://localhost:5001/get/ports
 ```
