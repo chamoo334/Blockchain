@@ -4,5 +4,5 @@ COPY ./requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY ./backend ./backend
 ENV PEER=TRUE
-EXPOSE 9898
+EXPOSE 5002-6002
 CMD [ "python", "-m", "backend.app.app" ]

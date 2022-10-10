@@ -63,9 +63,12 @@ def route_wallet_info():
     return jsonify({ 'address': wallet.address, 'balance': wallet.balance })
 
 # instantiate peer network connection and update blockchain
-if os.environ.get('PEER') == 'TRUE': #TODO: fix to True
+if os.environ.get('PEER') == 'TRUE':
 
-    PORT = PEER_PORT
+    # PORT = PEER_PORT
+    # get_port = requests.get(f'http://localhost:{PEER_HELPER_PORT}/peer/port').json()['peer_port']
+    PORT = requests.get(f'http://localhost:{PEER_HELPER_PORT}/peer/port').json()['peer_port']
+    print(PORT)
 
     result = requests.get(f'http://localhost:{APP_PORT}/blockchain')
     result_blockchain = Blockchain.from_json(result.json())
@@ -75,10 +78,15 @@ if os.environ.get('PEER') == 'TRUE': #TODO: fix to True
         print('\n -- Successfully synchronized the local chain')
     except Exception as e:
         print(f'\n -- Error synchronizing: {e}')
+else: # notify port_selector of server port in use
+    notify = requests.post(f'http://localhost:{PEER_HELPER_PORT}/update/server/port', json={'server_port': PORT})
 
 @atexit.register
 def free_port():
-    update = requests.post(f'http://localhost:{PEER_HELPER_PORT}/remove/port', json={'available_port': PORT})
+    if os.environ.get('PEER') == 'TRUE':
+        update = requests.post(f'http://localhost:{PEER_HELPER_PORT}/remove/port', json={'available_port': PORT})
+    else:
+        update = requests.post(f'http://localhost:{PEER_HELPER_PORT}/update/server/port', json={'server_port': PORT})
     return f'Port {PORT} is now available'
 
 #TODO: switch to sys.exit for cleaner
@@ -87,6 +95,8 @@ def signal_handler(sig, frame):
     os._exit(0)
 
 signal.signal(signal.SIGINT, signal_handler)
+signal.signal(signal.SIGTERM, signal_handler)
+
 
 if __name__ == '__main__':
     app.run(port=PORT, host='0.0.0.0')

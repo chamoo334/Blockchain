@@ -31,8 +31,7 @@ def update_file(replacement_line, filename, line_number):
 
 
 def main():
-    # peer_port = get_port()
-    peer_port = 9898
+    peer_port = get_port()
     dockerfile = project_base_dir() + 'dockerfiles/Dockerfile.server.peer'
     app_file = project_base_dir() + 'backend/config.py'
 
