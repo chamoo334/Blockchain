@@ -2,6 +2,7 @@
 *notes*
 *-env*
 **/__pycache__/
+**pytest_cache/
 .vscode/
 my_config.py
 ports-*.txt

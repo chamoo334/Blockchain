@@ -3,8 +3,11 @@
 - [Blockchain](#blockchain)
   - [Verify Applications](#verify-applications)
     - [Backend](#backend)
+    - [Frontend](#frontend)
   - [Run as Containers](#run-as-containers)
     - [Backend Only](#backend-only)
+    - [Frontend](#frontend-1)
+    - [All together](#all-together)
 
 ## Verify Applications
 ### Backend
@@ -28,7 +31,9 @@ python3 -m backend.port_selector
 # 3rd terminal
 export PEER=TRUE && python3 -m backend.app
 ```
-<!-- ### Frontend -->
+### Frontend
+1. cd frontend
+2. `npm run start`
 ## Run as Containers
 ### Backend Only
 1. build main server images <br>
@@ -52,4 +57,8 @@ wget http://localhost:5001/get/ports
 <mark>Note: </mark> At this point, 3 ports should be present: 5000 (backend.app non-peer instance), 5001 (backend.port_selector), and a third port for backend.app peer instance
 4. Proceed with tests:
    1. via `python3 -m backend.scripts.test_app`. This test can be modified by altering the TEST_ADDRESS specified in backend.config.
-   2. Alternatively, test the /blockchain and /blockchain/mine endpoints for each container by making calls to the respective ports on the specified network. 
+   2. Alternatively, test the /blockchain and /blockchain/mine endpoints for each container by making calls to the respective ports on the specified network.
+
+### Frontend
+
+### All together
