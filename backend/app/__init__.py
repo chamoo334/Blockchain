@@ -13,6 +13,7 @@ from backend.config import APP_ADDRESS, APP_PORT, PEER_HELPER_PORT, PEER_HELPER_
 PORT = APP_PORT
 
 app = Flask(__name__)
+app.config["JSON_SORT_KEYS"] = False 
 CORS(app, resources={ r'/*': { 'origins': TRUSTED_CLIENT_ADDRESS } })
 
 blockchain = Blockchain()

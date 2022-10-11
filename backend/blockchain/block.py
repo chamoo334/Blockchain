@@ -104,7 +104,9 @@ class Block:
           - the difficulty must only adjust by 1
           - the block hash must be a valid combination of the block fields
         """
+        
         if block.last_hash != last_block.hash:
+            print(f'{block.last_hash} != {last_block.hash}')
             raise Exception('The block last_hash must be correct')
 
         if hex_to_binary(block.hash)[0:block.difficulty] != '0' * block.difficulty:

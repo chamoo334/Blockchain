@@ -6,3 +6,4 @@
 .vscode/
 my_config.py
 ports-*.txt
+troubleshoot/
