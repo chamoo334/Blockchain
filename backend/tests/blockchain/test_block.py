@@ -1,43 +1,34 @@
-import time, pytest
+import pytest
+import time
+
 from backend.blockchain.block import Block, GENESIS_DATA
 from backend.config import MINE_RATE, SECONDS
 from backend.util.hex_to_binary import hex_to_binary
-
-def test_genesis():
-    genesis = Block.genesis()
-
-    # assert instance of Block is returned
-    assert isinstance(genesis, Block)
-
-    # verify instantiated block data matches GENESIS_DATA
-    for key, value in GENESIS_DATA.items():
-        assert getattr(genesis, key) == value
-
 
 def test_mine_block():
     last_block = Block.genesis()
     data = 'test-data'
     block = Block.mine_block(last_block, data)
 
-    # instance of correct class
     assert isinstance(block, Block)
-
-    # instantiated block data matches created
     assert block.data == data
     assert block.last_hash == last_block.hash
-
-    # proof of work
-    # assert block.hash[0:block.difficulty] == '0' * block.difficulty
     assert hex_to_binary(block.hash)[0:block.difficulty] == '0' * block.difficulty
 
-def test_mined_block_quickly():
+def test_genesis():
+    genesis = Block.genesis()
+
+    assert isinstance(genesis, Block)
+    for key, value in GENESIS_DATA.items():
+        getattr(genesis, key) == value
+
+def test_quickly_mined_block():
     last_block = Block.mine_block(Block.genesis(), 'foo')
     mined_block = Block.mine_block(last_block, 'bar')
 
-    # 
     assert mined_block.difficulty == last_block.difficulty + 1
 
-def test_mined_block_slowly():
+def test_slowly_mined_block():
     last_block = Block.mine_block(Block.genesis(), 'foo')
     time.sleep(MINE_RATE / SECONDS)
     mined_block = Block.mine_block(last_block, 'bar')
@@ -95,4 +86,3 @@ def test_is_valid_block_bad_block_hash(last_block, block):
 
 	with pytest.raises(Exception, match='block hash must be correct'):
 		Block.is_valid_block(last_block, block)
-

@@ -5,7 +5,8 @@ from backend.config import MINING_REWARD_INPUT
 
 class Blockchain:
     """
-    Blockchain: a public ledger (implemented as a list) of transactions (blocks).
+    Blockchain: a public ledger of transactions.
+    Implemented as a list of blocks - data sets of transactions
     """
     def __init__(self):
         self.chain = [Block.genesis()]
@@ -31,17 +32,17 @@ class Blockchain:
             raise Exception(f'Cannot replace. The incoming chain is invalid: {e}')
 
         self.chain = chain
-    
+
     def to_json(self):
         """
         Serialize the blockchain into a list of blocks.
         """
         return list(map(lambda block: block.to_json(), self.chain))
-    
+
     @staticmethod
     def from_json(chain_json):
         """
-        Deserialize a list of serialized blocks into a Blockchain instance.
+        Deserialize a list of serialized blocks into a Blokchain instance.
         The result will contain a chain list of Block instances.
         """
         blockchain = Blockchain()
@@ -121,6 +122,7 @@ def main():
     blockchain.add_block('two')
 
     print(blockchain)
+    print(f'blockchain.py ___name__: {__name__}')
 
 if __name__ == '__main__':
     main()

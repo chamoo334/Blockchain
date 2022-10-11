@@ -4,4 +4,4 @@ COPY ./requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY ./backend ./backend
 EXPOSE 5001
-CMD [ "python", "-m", "backend.app.port_selector" ]
+CMD [ "python", "-m", "backend.port_selector" ]

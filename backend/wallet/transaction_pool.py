@@ -37,5 +37,3 @@ class TransactionPool:
                     del self.transaction_map[transaction['id']]
                 except KeyError:
                     pass
-
-        

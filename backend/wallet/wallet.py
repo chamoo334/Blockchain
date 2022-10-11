@@ -76,6 +76,7 @@ class Wallet:
         """
         Calculate the balance of the given address considering the transaction
         data within the blockchain.
+
         The balance is found by adding the output values that belong to the
         address since the most recent transaction by that address.
         """

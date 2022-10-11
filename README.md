@@ -32,7 +32,7 @@ python3 -m backend.app
 python3 -m backend.port_selector
 
 # 3rd terminal
-export PEER=TRUE && python3 -m backend.app
+export PEER=True && python3 -m backend.app
 ```
 ### Frontend
 1. cd frontend

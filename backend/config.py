@@ -6,6 +6,7 @@ APP_ADDRESS = 'http://localhost'
 PEER_HELPER_ADDRESS = 'http://localhost'
 PEER_ADDRESS = 'http://localhost'
 TEST_ADDRESS = f'{APP_ADDRESS}:{APP_PORT}'
+TRUSTED_CLIENT_ADDRESS = 'http://localhost:3000'
 
 NANOSECONDS = 1
 MICROSECONDS = 1000 * NANOSECONDS
