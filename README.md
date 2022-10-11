@@ -1,14 +1,17 @@
 # Blockchain
 
 - [Blockchain](#blockchain)
+  - [Quick Start with Docker Compose](#quick-start-with-docker-compose)
   - [Verify Applications](#verify-applications)
     - [Backend](#backend)
     - [Frontend](#frontend)
   - [Run as Containers](#run-as-containers)
     - [Backend Only](#backend-only)
-    - [Frontend](#frontend-1)
+    - [Frontend Only](#frontend-only)
     - [All together](#all-together)
 
+## Quick Start with Docker Compose
+1. TODO: update
 ## Verify Applications
 ### Backend
 1. Install required packages
@@ -59,6 +62,6 @@ wget http://localhost:5001/get/ports
    1. via `python3 -m backend.scripts.test_app`. This test can be modified by altering the TEST_ADDRESS specified in backend.config.
    2. Alternatively, test the /blockchain and /blockchain/mine endpoints for each container by making calls to the respective ports on the specified network.
 
-### Frontend
+### Frontend Only
 
 ### All together
