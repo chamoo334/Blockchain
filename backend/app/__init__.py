@@ -70,13 +70,27 @@ def route_wallet_transact():
             transaction_data['amount']
         )
 
-    # pubsub.broadcast_transaction(transaction)
+    pubsub.broadcast_transaction(transaction)
 
     return jsonify(transaction.to_json())
 
 @app.route('/wallet/info')
 def route_wallet_info():
     return jsonify({ 'address': wallet.address, 'balance': wallet.balance })
+
+@app.route('/known-addresses')
+def route_known_addresses():
+    known_addresses = set()
+
+    for block in blockchain.chain:
+        for transaction in block.data:
+            known_addresses.update(transaction['output'].keys())
+
+    return jsonify(list(known_addresses))
+
+@app.route('/transactions')
+def route_transactions():
+    return jsonify(transaction_pool.transaction_data())
 
 
 if os.environ.get('PEER') == 'True':
