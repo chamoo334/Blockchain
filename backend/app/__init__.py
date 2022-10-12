@@ -1,4 +1,4 @@
-import os, requests, atexit, signal, random
+import os, requests, atexit, signal, random, time
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -70,7 +70,7 @@ def route_wallet_transact():
             transaction_data['amount']
         )
 
-    pubsub.broadcast_transaction(transaction)
+    # pubsub.broadcast_transaction(transaction)
 
     return jsonify(transaction.to_json())
 

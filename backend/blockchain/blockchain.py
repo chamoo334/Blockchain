@@ -63,15 +63,13 @@ class Blockchain:
         if chain[0] != Block.genesis():
             raise Exception('The genesis block must be valid')
 
-        print(f'length of chain: {len(chain)}')
-        for i in range(0, len(chain)):
-            print(f'\n{i}: {chain[i]}\n')
-
         for i in range(1, len(chain)):
             block = chain[i]
             last_block = chain[i-1]
 
             Block.is_valid_block(last_block, block)
+
+        print(f'\nBlocks passed')
 
         Blockchain.is_valid_transaction_chain(chain)
 
@@ -120,6 +118,7 @@ class Blockchain:
                         )
 
                 Transaction.is_valid_transaction(transaction)
+        print(f'\nTransaction chain passed')
 
 def main():
     blockchain = Blockchain()
