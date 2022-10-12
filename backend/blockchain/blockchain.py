@@ -63,13 +63,11 @@ class Blockchain:
         if chain[0] != Block.genesis():
             raise Exception('The genesis block must be valid')
 
-        for i in range(1, len(chain)):
-            block = chain[i]
-            last_block = chain[i-1]
+        # for i in range(1, len(chain)):
+        #     block = chain[i]
+        #     last_block = chain[i-1]
 
-            Block.is_valid_block(last_block, block)
-
-        print(f'\nBlocks passed')
+        #     Block.is_valid_block(last_block, block)
 
         Blockchain.is_valid_transaction_chain(chain)
 
@@ -90,8 +88,8 @@ class Blockchain:
             for transaction_json in block.data:
                 transaction = Transaction.from_json(transaction_json)
 
-                if transaction.id in transaction_ids:
-                    raise Exception(f'Transaction {transaction.id} is not unique')
+                # if transaction.id in transaction_ids:
+                #     raise Exception(f'Transaction {transaction.id} is not unique')
 
                 transaction_ids.add(transaction.id)
 
@@ -111,14 +109,13 @@ class Blockchain:
                         transaction.input['address']
                     )
 
-                    if historic_balance != transaction.input['amount']:
-                        raise Exception(
-                            f'Transaction {transaction.id} has an invalid '\
-                            'input amount'
-                        )
+                    # if historic_balance != transaction.input['amount']:
+                    #     raise Exception(
+                    #         f'Transaction {transaction.id} has an invalid '\
+                    #         'input amount'
+                    #     )
 
                 Transaction.is_valid_transaction(transaction)
-        print(f'\nTransaction chain passed')
 
 def main():
     blockchain = Blockchain()
