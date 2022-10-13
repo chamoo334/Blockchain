@@ -1,41 +1,43 @@
 # Blockchain
 
 - [Blockchain](#blockchain)
+  - [Quick Start](#quick-start)
   - [Verify Applications](#verify-applications)
     - [Backend](#backend)
-    - [Frontend](#frontend)
   - [Run as Containers](#run-as-containers)
-    - [Backend Only](#backend-only)
-    - [Frontend](#frontend-1)
-    - [All together](#all-together)
+    - [1. Backend](#1-backend)
+    - [2. Frontend Only](#2-frontend-only)
 
+## Quick Start
+1. TODO: finish script
 ## Verify Applications
 ### Backend
-1. Install required packages
-```
-pip3 install -r requirements.txt
-```
-2. Run tests
-```
-python3 -m pytest backend/tests
-```
-3. Run the application and API
-```
-python3 -m backend.app
-```
-4. To run a peer instance, start the port_selector server in a 2nd terminal. Run the peer port updater script and the start the application as a peer in a 3rd terminal.
-```sh
-# 2nd terminal
-python3 -m backend.port_selector
+1. Start the server (backend) applications
+   1. Install required packages
+   ```
+   pip3 install -r requirements.txt
+   ```
+   2. Run tests
+   ```
+   python3 -m pytest backend/tests
+   ```
+   3. Run the application and API
+   ```
+   export SEED_DATA=True && python3 -m backend.app
+   ```
+   4. To run a peer instance, start the port_selector server in a 2nd terminal. Run the peer port updater script and the start the application as a peer in a 3rd terminal.
+   ```sh
+   # 2nd terminal
+   python3 -m backend.port_selector
 
-# 3rd terminal
-export PEER=TRUE && python3 -m backend.app
-```
-### Frontend
-1. cd frontend
-2. `npm run start`
+   # 3rd terminal
+   export PEER=True && python3 -m backend.app
+   ```
+2. Start the client (frontend) application
+   1. cd frontend
+   2. `npm run start`
 ## Run as Containers
-### Backend Only
+### 1. Backend
 1. build main server images <br>
 <mark>Note</mark>: default ports for backend.app and backend.port_selector are 5000 and 5001. These ports can be adjusted by altering backend.config and updating Dockerfiles located in ./dockerfiles
 ```
@@ -59,6 +61,4 @@ wget http://localhost:5001/get/ports
    1. via `python3 -m backend.scripts.test_app`. This test can be modified by altering the TEST_ADDRESS specified in backend.config.
    2. Alternatively, test the /blockchain and /blockchain/mine endpoints for each container by making calls to the respective ports on the specified network.
 
-### Frontend
-
-### All together
+### 2. Frontend Only

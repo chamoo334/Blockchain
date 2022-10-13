@@ -5,11 +5,11 @@ from pubnub.callbacks import SubscribeCallback
 from pubnub.enums import PNReconnectionPolicy
 from backend.blockchain.block import Block
 from backend.wallet.transaction import Transaction
-# from backend.my_config import SUBSCRIBE_KEY, PUBLISH_KEY TODO: update for public repo
+from backend.my_config import SUBSCRIBE_KEY, PUBLISH_KEY
 
 pnconfig = PNConfiguration()
-pnconfig.subscribe_key = 'sub-c-d0056269-1a46-4950-9d0d-5299478ca97a'
-pnconfig.publish_key = 'pub-c-85a3cdef-b543-4c06-a1a5-323c650dd401'
+pnconfig.subscribe_key = SUBSCRIBE_KEY
+pnconfig.publish_key = PUBLISH_KEY
 pnconfig.user_id = 'UUID'
 # pnconfig.reconnect_policy = PNReconnectionPolicy.LINEAR
 pnconfig.reconnect_policy = PNReconnectionPolicy.EXPONENTIAL

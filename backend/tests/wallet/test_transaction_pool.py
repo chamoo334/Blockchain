@@ -1,5 +1,3 @@
-import pytest
-
 from backend.wallet.transaction_pool import TransactionPool
 from backend.wallet.transaction import Transaction
 from backend.wallet.wallet import Wallet

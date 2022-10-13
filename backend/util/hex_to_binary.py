@@ -19,7 +19,6 @@ HEX_TO_BINARY_CONVERSION_TABLE = {
     'f': '1111'
 }
 
-
 def hex_to_binary(hex_string):
     binary_string = ''
 

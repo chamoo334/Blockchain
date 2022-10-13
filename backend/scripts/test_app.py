@@ -1,9 +1,9 @@
 import requests
 import time
-from backend.config import TEST_ADDRESS
+
 from backend.wallet.wallet import Wallet
 
-BASE_URL = TEST_ADDRESS
+BASE_URL = 'http://localhost:5000'
 
 def get_blockchain():
     return requests.get(f'{BASE_URL}/blockchain').json()
@@ -27,13 +27,13 @@ recipient = Wallet().address
 post_wallet_transact_1 = post_wallet_transact(recipient, 21)
 print(f'\npost_wallet_transact_1: {post_wallet_transact_1}')
 
-time.sleep(5)
+time.sleep(1)
 post_wallet_transact_2 = post_wallet_transact(recipient, 13)
 print(f'\npost_wallet_transact_2: {post_wallet_transact_2}')
 
-time.sleep(5)
+time.sleep(1)
 mined_block = get_blockchain_mine()
 print(f'\nmined_block: {mined_block}')
 
-# wallet_info = get_wallet_info()
-# print(f'\nwallet_info: {wallet_info}')
+wallet_info = get_wallet_info()
+print(f'\nwallet_info: {wallet_info}')

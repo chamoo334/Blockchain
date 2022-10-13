@@ -1,7 +1,8 @@
 import time
+
 from backend.util.crypto_hash import crypto_hash
-from backend.config import MINE_RATE
 from backend.util.hex_to_binary import hex_to_binary
+from backend.config import MINE_RATE
 
 GENESIS_DATA = {
     'timestamp': 1,
@@ -103,6 +104,7 @@ class Block:
           - the difficulty must only adjust by 1
           - the block hash must be a valid combination of the block fields
         """
+        
         if block.last_hash != last_block.hash:
             raise Exception('The block last_hash must be correct')
 
