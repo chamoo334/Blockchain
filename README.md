@@ -1,16 +1,15 @@
 # Blockchain
 
 - [Blockchain](#blockchain)
-  - [Quick Start with Docker Compose](#quick-start-with-docker-compose)
+  - [Quick Start](#quick-start)
   - [Verify Applications](#verify-applications)
     - [Backend](#backend)
   - [Run as Containers](#run-as-containers)
-    - [Backend Only](#backend-only)
-    - [Frontend Only](#frontend-only)
-    - [All together](#all-together)
+    - [1. Backend](#1-backend)
+    - [2. Frontend Only](#2-frontend-only)
 
-## Quick Start with Docker Compose
-1. TODO: update
+## Quick Start
+1. TODO: finish script
 ## Verify Applications
 ### Backend
 1. Start the server (backend) applications
@@ -38,7 +37,7 @@
    1. cd frontend
    2. `npm run start`
 ## Run as Containers
-### Backend Only
+### 1. Backend
 1. build main server images <br>
 <mark>Note</mark>: default ports for backend.app and backend.port_selector are 5000 and 5001. These ports can be adjusted by altering backend.config and updating Dockerfiles located in ./dockerfiles
 ```
@@ -62,6 +61,4 @@ wget http://localhost:5001/get/ports
    1. via `python3 -m backend.scripts.test_app`. This test can be modified by altering the TEST_ADDRESS specified in backend.config.
    2. Alternatively, test the /blockchain and /blockchain/mine endpoints for each container by making calls to the respective ports on the specified network.
 
-### Frontend Only
-
-### All together
+### 2. Frontend Only
