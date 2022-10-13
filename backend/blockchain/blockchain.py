@@ -42,7 +42,7 @@ class Blockchain:
     @staticmethod
     def from_json(chain_json):
         """
-        Deserialize a list of serialized blocks into a Blokchain instance.
+        Deserialize a list of serialized blocks into a Blockchain instance.
         The result will contain a chain list of Block instances.
         """
         blockchain = Blockchain()

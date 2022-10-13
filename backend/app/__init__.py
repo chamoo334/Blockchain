@@ -104,9 +104,8 @@ if os.environ.get('PEER') == 'True':
         print('\n -- Successfully synchronized the local chain')
     except Exception as e:
         print(f'\n -- Error synchronizing: {e}')
-
-# else: # notify port_selector of server port in use
-    # notify = requests.post(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/update/server/port', json={'server_port': PORT})
+else:
+    notify = requests.post(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/update/server/port', json={'server_port': PORT})
 
 if os.environ.get('SEED_DATA') == 'True':
     for i in range(10):
@@ -114,6 +113,11 @@ if os.environ.get('SEED_DATA') == 'True':
             Transaction(Wallet(), Wallet().address, random.randint(2, 50)).to_json(),
             Transaction(Wallet(), Wallet().address, random.randint(2, 50)).to_json()
         ])
+
+    for i in range(3):
+        transaction_pool.set_transaction(
+            Transaction(Wallet(), Wallet().address, random.randint(2, 50))
+        )
 
 @atexit.register
 def free_port():

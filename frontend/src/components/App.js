@@ -19,6 +19,10 @@ function App() {
       <img className="logo" src={logo} alt="application-logo" />
       <h3>Welcome to pychain</h3>
       <br />
+      <div className="WalletInfo">
+          <div>Address: {address}</div>
+          <div>Balance: {balance}</div>
+      </div>
       <Link to="/blockchain">Blockchain</Link>
       <Link to="/conduct-transaction">Conduct a Transaction</Link>
       <Link to="/transaction-pool">Transaction Pool</Link>

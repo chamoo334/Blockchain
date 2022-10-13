@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Transaction from './Transaction';
 import { API_BASE_URL, SECONDS_JS } from '../config';
-import history from '../history';
 
 const POLL_INTERVAL = 10 * SECONDS_JS;
 
 function TransactionPool() {
+    const navigate = useNavigate();
     const [transactions, setTransactions] = useState([]);
 
     const fetchTransactions = () => {
@@ -21,19 +21,18 @@ function TransactionPool() {
     }
 
     useEffect(() => {
-    fetchTransactions();
+        fetchTransactions();
 
-    const intervalId = setInterval(fetchTransactions, POLL_INTERVAL);
+        const intervalId = setInterval(fetchTransactions, POLL_INTERVAL);
 
-    return () => clearInterval(intervalId);
+        return () => clearInterval(intervalId);
     }, []);
 
     const fetchMineBlock = () => {
         fetch(`${API_BASE_URL}/blockchain/mine`)
             .then(() => {
                 alert('Success!');
-
-                history.push('/blockchain');
+                navigate('/blockchain');
             });
     }
 

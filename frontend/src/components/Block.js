@@ -49,7 +49,7 @@ function ToggleTransactionDisplay({ block }) {
 }
 
 function Block({ block }) {
-    const { timestamp, hash } = block;
+    const { timestamp, hash} = block;
     const hashDisplay = `${hash.substring(0, 15)}...`;
     const timestampDisplay = new Date(timestamp / MILLISECONDS_PY).toLocaleString();
   
