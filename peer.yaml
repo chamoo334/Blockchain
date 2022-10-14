@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      dockerfile: ./dockerfiles/Dockerfile.server.main
+    ports:
+      - 5002-6002:5002-6002
+    environment:
+      PEER: True
+    depends_on:
+      - "helper"
+  
+  web:
+    build:
+      dockerfile: ./dockerfiles/Dockerfile.client
+    ports:
+      - 3000:3000
+    depends_on:
+      - "api"
+    command: ["./wait-for-it.sh", "api:5002", "--timeout=10", "--strict", "--", "npm", "run", "start" ]

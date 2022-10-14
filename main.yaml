@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  
+  helper:
+    build:
+      dockerfile: ./dockerfiles/Dockerfile.server.helper
+    ports:
+      - 5001:5001
+  
+  api:
+    build:
+      dockerfile: ./dockerfiles/Dockerfile.server.main
+    ports:
+      - 5000:5000
+    environment:
+      SEED_DATA: True
+    depends_on:
+      - "helper"
+    command: ["./wait-for-it.sh", "helper:5001", "--timeout=10", "--strict", "--", "python", "-m", "backend.app"]
+  
+  web:
+    build:
+      dockerfile: ./dockerfiles/Dockerfile.client
+    ports:
+      - 3000:3000
+    depends_on:
+      - "api"
+    command: ["./wait-for-it.sh", "api:5000", "--timeout=10", "--strict", "--", "npm", "run", "start" ]
+    

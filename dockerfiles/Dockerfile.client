@@ -1,5 +1,6 @@
 FROM node:16.17.1-alpine
 WORKDIR usr/app
+COPY ./wait-for-it.sh .
 COPY ./frontend/package.json ./package.json
 COPY ./frontend/package-lock.json ./package-lock.json
 COPY ./frontend/public ./public
