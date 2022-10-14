@@ -46,14 +46,14 @@ docker build --no-cache -t backendhelper -f ./dockerfiles/Dockerfile.server.help
 docker build --no-cache -t backendmain -f ./dockerfiles/Dockerfile.server.main .
 docker build --no-cache -t backendpeer -f ./dockerfiles/Dockerfile.server.peer .
 ```
-2. run main server containers <br>
+2. run backend server containers <br>
 <mark>Note</mark>: These run commands are set to use localhost for general use within various environments. Please adjust the declared network to use and update urls in backend.config for your needs.
 ```
 docker run -p 5001:5001 --name backendhelper --net=host -d backendhelper
 docker run -p 5000:5000 --name backendmain --net=host -d backendmain
 docker run -p 5002-6002:5002-6002 --name backendpeer --net=host -d backendpeer
 ```
-1. obtain ports
+3. obtain ports
 ```
 wget http://localhost:5001/get/ports
 ```
