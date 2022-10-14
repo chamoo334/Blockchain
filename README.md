@@ -4,7 +4,7 @@
   - [Quick Start](#quick-start)
   - [Verify Applications](#verify-applications)
     - [Backend](#backend)
-  - [Run as Containers](#run-as-containers)
+  - [Run Containers](#run-containers)
     - [Backend](#backend-1)
     - [Frontend](#frontend)
 
@@ -37,14 +37,14 @@
 2. Start the client (frontend) application
    1. cd frontend
    2. `npm run start`
-## Run as Containers
+## Run Containers
 ### Backend
 1. build main server images <br>
 <mark>Note</mark>: default ports for backend.app and backend.port_selector are 5000 and 5001. These ports can be adjusted by altering backend.config and updating Dockerfiles located in ./dockerfiles
 ```
-docker build --no-cache -t backendhelper -f ./dockerfiles/Dockerfile.server.helper .
-docker build --no-cache -t backendmain -f ./dockerfiles/Dockerfile.server.main .
-docker build --no-cache -t backendpeer -f ./dockerfiles/Dockerfile.server.peer .
+docker build --no-cache --rm -t backendhelper -f ./dockerfiles/Dockerfile.server.helper .
+docker build --no-cache --rm -t backendmain -f ./dockerfiles/Dockerfile.server.main .
+docker build --no-cache --rm -t backendpeer -f ./dockerfiles/Dockerfile.server.peer .
 ```
 2. run backend server containers <br>
 <mark>Note</mark>: These run commands are set to use localhost for general use within various environments. Please adjust the declared network to use and update urls in backend.config for your needs.
@@ -63,3 +63,5 @@ wget http://localhost:5001/get/ports
    2. Alternatively, test the /blockchain and /blockchain/mine endpoints for each container by making calls to the respective ports on the specified network.
 
 ### Frontend
+1. build `docker build --no-cache --rm -t frontend -f ./dockerfiles/Dockerfile.client .`
+2. run `docker run -p 3000:3000 --name frontend --net=host -d frontend`
