@@ -71,4 +71,3 @@ signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGTERM, signal_handler)
 
 app.run(port=PORT, host='0.0.0.0')
-    # project_base_dir()
