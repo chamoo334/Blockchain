@@ -8,6 +8,7 @@ services:
       - 5002-6002:5002-6002
     environment:
       PEER: True
+      HAS_PORT: True
     depends_on:
       - "helper"
   

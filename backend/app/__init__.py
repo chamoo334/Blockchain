@@ -8,7 +8,7 @@ from backend.wallet.wallet import Wallet
 from backend.wallet.transaction import Transaction
 from backend.wallet.transaction_pool import TransactionPool
 from backend.pubsub import PubSub
-from backend.config import APP_ADDRESS, APP_PORT, PEER_HELPER_PORT, PEER_HELPER_ADDRESS, TRUSTED_CLIENT_ADDRESS
+from backend.config import APP_ADDRESS, APP_PORT, PEER_HELPER_PORT, PEER_HELPER_ADDRESS, PEER_PORT, TRUSTED_CLIENT_ADDRESS
 
 PORT = APP_PORT
 
@@ -94,7 +94,11 @@ def route_transactions():
 
 
 if os.environ.get('PEER') == 'True':
-    PORT = requests.get(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/peer/port').json()['peer_port']
+    if os.environ.get('HAS_PORT') == 'True':
+        PORT = PEER_PORT
+        notify = requests.post(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/update/server/port', json={'server_port': PORT})
+    else:
+        PORT = requests.get(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/peer/port').json()['peer_port']
 
     result = requests.get(f'{APP_ADDRESS}:{APP_PORT}/blockchain')
     result_blockchain = Blockchain.from_json(result.json())
