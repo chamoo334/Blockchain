@@ -6,7 +6,8 @@ APP_ADDRESS = 'http://localhost'
 PEER_HELPER_ADDRESS = 'http://localhost'
 PEER_ADDRESS = 'http://localhost'
 TEST_ADDRESS = f'{APP_ADDRESS}:{APP_PORT}'
-TRUSTED_CLIENT_ADDRESS = 'http://localhost:3000'
+TRUSTED_CLIENT_PORT = 3000
+TRUSTED_CLIENT_ADDRESS = f'http://localhost:{TRUSTED_CLIENT_PORT}'
 
 SUBSCRIBE_KEY = None
 PUBLISH_KEY = None

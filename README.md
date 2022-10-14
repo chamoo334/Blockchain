@@ -5,8 +5,8 @@
   - [Verify Applications](#verify-applications)
     - [Backend](#backend)
   - [Run as Containers](#run-as-containers)
-    - [1. Backend](#1-backend)
-    - [2. Frontend Only](#2-frontend-only)
+    - [Backend](#backend-1)
+    - [Frontend](#frontend)
 
 ## Quick Start
 1. TODO: finish script
@@ -37,7 +37,7 @@
    1. cd frontend
    2. `npm run start`
 ## Run as Containers
-### 1. Backend
+### Backend
 1. build main server images <br>
 <mark>Note</mark>: default ports for backend.app and backend.port_selector are 5000 and 5001. These ports can be adjusted by altering backend.config and updating Dockerfiles located in ./dockerfiles
 ```
@@ -61,4 +61,4 @@ wget http://localhost:5001/get/ports
    1. via `python3 -m backend.scripts.test_app`. This test can be modified by altering the TEST_ADDRESS specified in backend.config.
    2. Alternatively, test the /blockchain and /blockchain/mine endpoints for each container by making calls to the respective ports on the specified network.
 
-### 2. Frontend Only
+### Frontend
