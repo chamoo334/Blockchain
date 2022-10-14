@@ -55,20 +55,20 @@ def route_add_port():
 def route_get_ports():
     return jsonify(ports = PORTS_IN_USE)
 
-@atexit.register
-def remove_self_backup_ports_in_use():
-    update_ports_remove(PORT)
-    ports_backup = project_base_dir() + f'backend/backups/ports-{datetime.now().strftime("%Y-%m-%d-%H-%M-%S")}.txt'
-    ports_string_list = [f'{port}\n' for port in PORTS_IN_USE]
-    write_to_file(ports_string_list, ports_backup)
+# @atexit.register
+# def remove_self_backup_ports_in_use():
+#     update_ports_remove(PORT)
+#     ports_backup = project_base_dir() + f'backend/backups/ports-{datetime.now().strftime("%Y-%m-%d-%H-%M-%S")}.txt'
+#     ports_string_list = [f'{port}\n' for port in PORTS_IN_USE]
+#     write_to_file(ports_string_list, ports_backup)
 
 #TODO: switch to sys.exit for cleaner
 def signal_handler(sig, frame):
-    remove_self_backup_ports_in_use()
+    # remove_self_backup_ports_in_use()
     os._exit(0)
 
 signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGTERM, signal_handler)
 
-if __name__ == '__main__':
-    app.run(port=PORT, host='0.0.0.0')
+app.run(port=PORT, host='0.0.0.0')
+    # project_base_dir()

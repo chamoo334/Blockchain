@@ -1,10 +1,7 @@
 import argparse
 
-
 class Parser:
-    """
-    
-    """
+    """Command line parser based on argparse"""
     def __init__(self, msg, commands):
         self.parser = argparse.ArgumentParser(description = msg)
         self.add_commands(commands)
@@ -13,7 +10,7 @@ class Parser:
     def add_commands(self, new_command):
         """
         Dictionary with list values [-e, help_msg, type] for each key command.
-        Example: {'--peers': ['p', 'Specify number of peer instances to create', int, {'const': 1}]}
+        Example: {'--peers': ['p', 'Specify number of peer instances to create', int, True]}
         """
         for key in new_command:
             short, command_msg, input_type = new_command[key][0:3]
@@ -27,8 +24,8 @@ class Parser:
             
 
 if __name__ == '__main__':
-    test_values = {'peers': ['p', 'Specify number of peer instances to create', int]}
-    test = Parser("Blockchain initialization script. Requires argument for number of peers.", test_values)
-    print(test.args.peers)
+    test_values = {'test': ['t', 'Testing Parser instance', int, True]}
+    test = Parser("Just a test.", test_values)
+    print(test.args.test)
     print('done')
     

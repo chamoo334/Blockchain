@@ -104,8 +104,8 @@ if os.environ.get('PEER') == 'True':
         print('\n -- Successfully synchronized the local chain')
     except Exception as e:
         print(f'\n -- Error synchronizing: {e}')
-else:
-    notify = requests.post(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/update/server/port', json={'server_port': PORT})
+# else:
+#     notify = requests.post(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/update/server/port', json={'server_port': PORT})
 
 if os.environ.get('SEED_DATA') == 'True':
     for i in range(10):

@@ -23,6 +23,7 @@
    ```
    3. Run the application and API
    ```
+   python3 -m backend.port_selector
    export SEED_DATA=True && python3 -m backend.app
    ```
    4. To run a peer instance, start the port_selector server in a 2nd terminal. Run the peer port updater script and the start the application as a peer in a 3rd terminal.
