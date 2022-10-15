@@ -96,7 +96,6 @@ def route_transactions():
 if os.environ.get('PEER') == 'True':
     if os.environ.get('HAS_PORT') == 'True':
         PORT = PEER_PORT
-        notify = requests.post(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/update/server/port', json={'server_port': PORT})
     else:
         PORT = requests.get(f'{PEER_HELPER_ADDRESS}:{PEER_HELPER_PORT}/peer/port').json()['peer_port']
 

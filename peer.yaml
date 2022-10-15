@@ -5,7 +5,7 @@ services:
     build:
       dockerfile: ./dockerfiles/Dockerfile.server.main
     ports:
-      - 5002-6002:5002-6002
+      - 5002:5002
     environment:
       PEER: True
       HAS_PORT: True
@@ -16,7 +16,7 @@ services:
     build:
       dockerfile: ./dockerfiles/Dockerfile.client
     ports:
-      - 3000:3000
+      - 30002:3002
     depends_on:
       - "api"
     command: ["./wait-for-it.sh", "api:5002", "--timeout=10", "--strict", "--", "npm", "run", "start" ]
