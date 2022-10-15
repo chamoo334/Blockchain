@@ -10,7 +10,7 @@ starter = Parser(script_description, commands)
 app_port = 5000 if starter.args.app_port is None else starter.args.app_port
 client_port = app_port - 2000
 helper_port = 5001 if starter.args.helper_port is None else starter.args.helper_port
-base_dir = project_base_dir()
+base_dir = f'{project_base_dir()}/'
 
 # adjusts ports in backend.config
 server_config_file = f'{base_dir}/backend/config.py'
@@ -31,7 +31,7 @@ compose[28] = f'    command: ["./wait-for-it.sh", "api:{app_port}", "--timeout=1
 write_to_file(compose, main_compose)
 
 
-# adjust ports in frontendm, dockerfiles
+# adjust ports in frontend, dockerfiles
 single_line_updates = [
     [f'    "start": "export PORT={client_port} react-scripts start",\n', f'{base_dir}/frontend/package.json', 19],
     [f'EXPOSE {client_port}\n', f'{base_dir}/dockerfiles/Dockerfile.client', 8], 

@@ -11,7 +11,12 @@
       - [Frontend](#frontend)
 
 ## Quick Start
-1. TODO: finish script
+1. python3 -m quick_start.start_main
+   1. -a: api port (optional)
+   2. -p: prt_selector port (optional)
+2. python3 -m quick_start.start_peers -p=1 -a=http://localhost:5001/peer/port
+   1. -p: number of peers
+   2. -a: address of port_selector server
 ## Verify Applications
 ### Backend
 1. Start the server (backend) applications
