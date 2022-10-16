@@ -47,9 +47,9 @@
 ## Run Containers
 ### Docker Compose
 1. docker compose up -f main.yaml -d --build
-   1. docker compose -f main.yaml dow
+   1. docker compose -f main.yaml down
 2. docker compose up -f peer.yaml -d --build
-   1. docker compose -f peer.yaml dow
+   1. docker compose -f peer.yaml down
 ### Separately
 #### Backend
 1. build main server images <br>

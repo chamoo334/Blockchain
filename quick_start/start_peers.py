@@ -5,17 +5,11 @@ from backend.util.update_peer_port import project_base_dir, write_to_file, read_
 
 # python3 -m quick_start.start_peers -p=1 -a=http://localhost:5001/peer/port
 
-script_description = 'Quick start script to obtain peer port and update files.'
-commands = {
-    'peers': ['p', 'Specify number of peer instances to create. Will default to 1 if no input given', int, True],
-    'helper_address': ['a', 'Specify the address for communications with port_selector (backend.config)', str, True]
-}
-starter = Parser(script_description, commands)
-peers = starter.args.peers
-req_add = starter.args.helper_address
 base_dir = f'{project_base_dir()}/'
+server_config_file = f'{base_dir}backend/config.py'
+peer_compose = f'{base_dir}peer.yaml'
 
-for i in range(peers):
+def update_peer(req_add):
     peer_port = None
     client_port = None
 
@@ -30,16 +24,13 @@ for i in range(peers):
     except Exception as err:
         print(f'Other error occurred: {err}')
 
-    # update frontend, dockerfile
     # adjusts ports in backend.config
-    server_config_file = f'{base_dir}backend/config.py'
     config = read_from_file(server_config_file)
     config[2] = f'TRUSTED_CLIENT_PORT = {client_port}\n'
     config[3] = f'PEER_PORT = {peer_port}\n'
     write_to_file(config, server_config_file)
 
     # update peer.yaml
-    peer_compose = f'{base_dir}peer.yaml'
     compose = read_from_file(peer_compose)
     compose[7] = f'      - {peer_port}:{peer_port}\n'
     compose[18] = f'      - {client_port}:{client_port}'
@@ -56,4 +47,20 @@ for i in range(peers):
     for update in single_line_updates:
         write_to_file(update[0], update[1], update[2])
 
-# run docker compose
+    
+def update_run_peers(peers, req_address):
+    for i in range(peers):
+        update_peer(req_address)
+        # run docker compose
+
+
+if __name__ == '__main__':
+    script_description = 'Quick start script to obtain peer port and update files.'
+    commands = {
+        'peers': ['p', 'Specify number of peer instances to create. Will default to 1 if no input given', int, True],
+        'helper_address': ['a', 'Specify the address for communications with port_selector (backend.config)', str, True]
+    }
+    starter = Parser(script_description, commands)
+    peers = starter.args.peers
+    req_add = starter.args.helper_address
+    update_run_peers(peers, req_add)
