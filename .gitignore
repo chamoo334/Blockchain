@@ -4,7 +4,7 @@
 **/__pycache__/
 **pytest_cache/
 .vscode/
-my_config.py
+my_config_.py
 ports-*.txt
 troubleshoot/
 

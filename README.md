@@ -1,6 +1,7 @@
 # Blockchain
 
 - [Blockchain](#blockchain)
+  - [Requirements](#requirements)
   - [Quick Start](#quick-start)
   - [Verify Applications](#verify-applications)
     - [Backend](#backend)
@@ -10,6 +11,10 @@
       - [Backend](#backend-1)
       - [Frontend](#frontend)
 
+## Requirements
+- Python3
+- [Dependencies](./requirements.txt)
+- PubNub Subscribe and Publisher Keys [here](./backend/my_config.py)
 ## Quick Start
 1. python3 -m quick_start.start
    1. -n: Specify number of peer instances to create. Will default to 1 if no input given, int
