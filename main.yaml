@@ -7,7 +7,9 @@ services:
       dockerfile: ./dockerfiles/Dockerfile.server.helper
     ports:
       - 5001:5001
-  
+    networks:
+      hostnet: {}
+
   api:
     build:
       dockerfile: ./dockerfiles/Dockerfile.server.main
@@ -18,7 +20,9 @@ services:
     depends_on:
       - "helper"
     command: ["./wait-for-it.sh", "helper:5001", "--timeout=10", "--strict", "--", "python", "-m", "backend.app"]
-  
+    networks:
+      hostnet: {}
+
   web:
     build:
       dockerfile: ./dockerfiles/Dockerfile.client
@@ -27,4 +31,13 @@ services:
     depends_on:
       - "api"
     command: ["./wait-for-it.sh", "api:5000", "--timeout=10", "--strict", "--", "npm", "run", "start" ]
+  networks:
+      hostnet: {}
+
+
+networks:
+
+  hostnet:
+    external: true
+    name: host
     
