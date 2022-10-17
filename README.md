@@ -11,12 +11,11 @@
       - [Frontend](#frontend)
 
 ## Quick Start
-1. python3 -m quick_start.start_main
-   1. -a: api port (optional)
-   2. -p: prt_selector port (optional)
-2. python3 -m quick_start.start_peers -p=1 -a=http://localhost:5001/peer/port
-   1. -p: number of peers
-   2. -a: address of port_selector server
+1. python3 -m quick_start.start
+   1. -n: Specify number of peer instances to create. Will default to 1 if no input given, int
+   2. -m: Specify the port for the main backend port. Will default to 5000 if no input given, int
+   3. -p: Specify the port for the port selector to run on. Will default to 5001 if no input given, int
+   4. -a: Specify the address for communications with port_selector (backend.config), str
 ## Verify Applications
 ### Backend
 1. Start the server (backend) applications

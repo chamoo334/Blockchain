@@ -1,5 +1,6 @@
 from quick_start.parser import Parser
 from backend.util.update_peer_port import project_base_dir, write_to_file, read_from_file
+from quick_start.gen_commands import dock_comp_up
 
 
 base_dir = f'{project_base_dir()}/'
@@ -38,7 +39,7 @@ def update_main(app_port, helper_port):
 
 def update_run_main(app_port, helper_port):
     update_main(app_port, helper_port)
-    # run docker compose
+    dock_comp_up(main_compose)
 
 
 if __name__ == '__main__':

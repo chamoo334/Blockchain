@@ -2,6 +2,7 @@ import requests
 from requests.exceptions import HTTPError
 from quick_start.parser import Parser
 from backend.util.update_peer_port import project_base_dir, write_to_file, read_from_file
+from quick_start.gen_commands import dock_comp_up
 
 # python3 -m quick_start.start_peers -p=1 -a=http://localhost:5001/peer/port
 
@@ -51,7 +52,7 @@ def update_peer(req_add):
 def update_run_peers(peers, req_address):
     for i in range(peers):
         update_peer(req_address)
-        # run docker compose
+        dock_comp_up(peer_compose)
 
 
 if __name__ == '__main__':
